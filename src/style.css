@@ -184,6 +184,16 @@ canvas {
   margin-left: auto;
   width: 11px;
 }
+.x-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 15px;
+  width: 15px;
+  height: 17px;
+  font-size: 15px;
+  line-height: 1;
+}
 .workspace {
   min-width: 0;
   display: flex;

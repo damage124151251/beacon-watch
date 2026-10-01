@@ -3,6 +3,7 @@ import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import sharp from "sharp";
+import { X_URL } from "../src/config.mjs";
 const production = process.argv.includes("--production"),
   base = production
     ? "https://beacon-watch.vercel.app"
@@ -12,6 +13,7 @@ const production = process.argv.includes("--production"),
 await mkdir(out, { recursive: true });
 const status = await fetch(base + "/api/status").then((r) => r.json());
 assert.ok(status.stations.length);
+assert.equal(status.identity.x, X_URL);
 assert.ok(
   status.runs.some((r) => r.snapshot),
   "Provision real observations before QA.",
@@ -37,6 +39,12 @@ const shot = (name) =>
     fullPage: true,
   });
 async function layout(name) {
+  const social = page.getByRole("link", { name: "Follow on X", exact: true });
+  assert.equal(await social.getAttribute("href"), X_URL);
+  assert.equal(await social.getAttribute("target"), "_blank");
+  assert.match(await social.getAttribute("rel"), /noopener/);
+  const socialBox = await social.boundingBox();
+  assert.ok(socialBox?.width >= 15 && socialBox?.height >= 17, `${name}: X link visible`);
   const result = await page.evaluate(() => ({
     width: innerWidth,
     scroll: document.documentElement.scrollWidth,

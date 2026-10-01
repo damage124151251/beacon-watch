@@ -47,7 +47,7 @@ Still: `post-03.png` (1600 x 900)
 
 - Site: https://beacon-watch.vercel.app/
 - GitHub: https://github.com/damage124151251/beacon-watch
-- X: not supplied.
+- X: https://x.com/agentsbeacon (@agentsbeacon).
 - CA: soon. Automatic discovery requires a dedicated public dev wallet.
 
 ## Profile assets

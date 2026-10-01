@@ -28,7 +28,7 @@ import {
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/silkscreen/400.css";
-import { CREW, GITHUB_URL } from "./config.mjs";
+import { CREW, GITHUB_URL, X_URL } from "./config.mjs";
 import { CATALOG, provider, visibleStatus, labels } from "./catalog.mjs";
 import { addressValid, snapshotMarkdown } from "./domain.mjs";
 import {
@@ -289,6 +289,13 @@ function App() {
             <External href={identity.github || GITHUB_URL}>
               <Github size={15} />
               GitHub
+            </External>
+            <External
+              href={identity.x || X_URL}
+              title="BEACON on X (@agentsbeacon)"
+            >
+              <span className="x-symbol" aria-hidden="true">X</span>
+              Follow on X
             </External>
             <button onClick={() => setModal({ type: "token" })}>
               <Radio size={15} />

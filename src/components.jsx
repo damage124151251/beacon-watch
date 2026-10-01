@@ -107,11 +107,12 @@ export function CopyButton({ value }) {
     </IconButton>
   );
 }
-export function External({ href, children, className = "" }) {
+export function External({ href, children, className = "", title }) {
   return (
     <a
       className={`external ${className}`}
       href={href}
+      title={title}
       target="_blank"
       rel="noopener noreferrer"
     >
